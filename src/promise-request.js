@@ -38,7 +38,7 @@ module.exports = function(options, body) {
     });
 
     if (body) {
-      request.write(options.serialize(body));
+      request.write(body);
     }
     request.end();
   });

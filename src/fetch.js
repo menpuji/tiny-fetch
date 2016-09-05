@@ -16,8 +16,10 @@ module.exports = function(url, opts) {
     protocol: "http",
     port: "80"
   }
+  var posData = body && JSON.stringify(body);
   if ((opts && opts.method) != "get") {
     defaultOptions.headers = {
+      'Content-Length': Buffer.byteLength(posData),
       'Content-Type': "application/json"
     }
   }
@@ -28,5 +30,5 @@ module.exports = function(url, opts) {
   //   'token': "V0VJWElOOiQqJTp3ZWl4aW4xMjM0NTZAIyQ"
   // },
 
-  return promiseRequest(options, body);
+  return promiseRequest(options, posData);
 }
