@@ -30,10 +30,12 @@ module.exports = function(options, body) {
         }));
       });
       response.on('error', function(error) {
+        error.options = options;
         reject(error);
       });
     });
     request.on('error', function(e) {
+      e.options = options;
       reject(e);
     });
 

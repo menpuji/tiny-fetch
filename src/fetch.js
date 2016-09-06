@@ -16,14 +16,14 @@ module.exports = function(url, opts) {
     protocol: "http",
     port: "80"
   }
+  var options = lodash.extend(defaultOptions, config, opts);
   var posData = body && JSON.stringify(body);
-  if ((opts && opts.method) != "get") {
-    defaultOptions.headers = {
+  if ((options && options.method) != "get") {
+    options.headers = {
       'Content-Length': Buffer.byteLength(posData),
       'Content-Type': "application/json"
     }
   }
-  var options = lodash.extend(defaultOptions, config, opts);
 
   // headers: {
   //   'Content-Type': "application/json",
