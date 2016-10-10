@@ -19,6 +19,7 @@ module.exports = function(url, opts) {
   var options = lodash.extend(defaultOptions, config, opts);
   var posData = body && JSON.stringify(body);
   if ((options && options.method) != "get") {
+    options.headers =  options.headers || {};
     options.headers['Content-Length'] = Buffer.byteLength(posData);
     options.headers['Content-Type'] = "application/json"
   }
